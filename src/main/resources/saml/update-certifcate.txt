@@ -1,0 +1,11 @@
+# e.g.
+
+openssl s_client -host test.adfs.maaya.net -port 443 -prexit -showcerts </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > testadfs.cert
+
+keytool -delete -alias testadfs -keystore testadfs-keystore.jks -storepass maaya123 -noprompt
+keytool -genkeypair -alias spkey -keypass maaya123 -keystore testadfs-keystore.jks -v -keyalg RSA -keysize 2048
+keytool -importcert -alias testadfs -file testadfs.cer -keystore testadfs-keystore.jks -keypass maaya123 -storepass maaya123
+keytool -list -keystore testadfs-keystore.jks -storetype JKS
+# このlistにprivateKeyEntryとTrustedCertEntryが紐づいていればOK
+
+

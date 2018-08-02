@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1>Hello world, guys!</h1>
+        <p>
+        	<a th:href="@{/saml/login}">SSO Login Page</a>
+        </p>
+        <p>
+        	<a th:href="@{/saml/login(idp='http://test.adfs.maaya.net/adfs/services/trust')}">Direct Login to <strong>http://test.adfs.maaya.net/adfs/services/trust</strong></a>
+        </p>
+    </body>
+</html>
